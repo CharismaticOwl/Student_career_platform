@@ -41,11 +41,10 @@ pipeline{
         stage('Push images to AWS ECR'){
             steps{
                 script{
-                    withAWS(credentials: 'aws', region: 'ap-south-1') {
-                        sh 'docker push ${FRONTEND_IMAGE}'
-                        sh 'docker push ${FRONTEND_IMAGE}'
-                        sh 'docker push ${FRONTEND_IMAGE}'
-                    }
+                    docker.withRegistry('https://367065853931.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws') {
+                    app.push("${FRONTEND_IMAGE}")
+                    app.push("${BACKEND_IMAGE}")
+                    app.push("${CHATBACKEND_IMAGE}")
                 }
             }
         }
