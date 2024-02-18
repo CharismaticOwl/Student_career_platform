@@ -43,15 +43,15 @@ pipeline{
         }
         
 
-        // stage('Push images to AWS ECR'){
-        //     steps{
-        //         script{
-        //             docker.withRegistry('https://367065853931.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws') {
-        //             frontendImage.push("${FRONTEND_IMAGE}")
-        //             app.push("${BACKEND_IMAGE}")
-        //             app.push("${CHATBACKEND_IMAGE}")
-        //         }
-        //     }
-        // }
+        stage('Push images to AWS ECR'){
+            steps{
+                script{
+                    docker.withRegistry('https://367065853931.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws') {
+                    frontendImage.push("${FRONTEND_IMAGE}")
+                    backendendImage.push("${BACKEND_IMAGE}")
+                    chatbackendImage.push("${CHATBACKEND_IMAGE}")
+                }
+            }
+        }
     }
 }
