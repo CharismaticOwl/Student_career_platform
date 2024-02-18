@@ -17,7 +17,7 @@ pipeline{
         stage('Containerize frontend'){
             steps{
                 script{
-                    frontendImage = docker.build ${FRONTEND_IMAGE}
+                    frontendImage = docker.build("${FRONTEND_IMAGE}")
                 }
             }
         }
