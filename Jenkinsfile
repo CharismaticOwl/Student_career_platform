@@ -22,8 +22,10 @@ pipeline{
             sh 'docker build -t ${BACKEND_IMAGE} backend'
         }
 
-        stage('Containerize frontend'){
+        stage('Containerize chatbackend'){
             sh 'docker build -t ${CHATBACKEND_IMAGE} chatbackend'
         }
+
+        stage('')
     }
 }
