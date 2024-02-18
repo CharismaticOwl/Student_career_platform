@@ -37,5 +37,13 @@ pipeline{
                 }
             }
         }
+
+        stage('Testing AWS'){
+            steps{
+                withAWS(credentials: 'aws', region: 'ap-south-1') {
+                    sh 'aws sts get-caller-identity'
+                }
+            }
+        }
     }
 }
