@@ -28,7 +28,7 @@ pipeline{
             steps{
                 script{
                     
-                    frontendImage = docker.build("${BACKEND_IMAGE}","backend")
+                    backendendImage = docker.build("${BACKEND_IMAGE}","backend")
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline{
             steps{
                 script{
                     
-                    frontendImage = docker.build("${CHATBACKEND_IMAGE}","chatbackend")
+                    chatbackendImage = docker.build("${CHATBACKEND_IMAGE}","chatbackend")
                 }
             }
         }
