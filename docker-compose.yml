@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend
+    image: narsss1234/node-app:frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+  backend:   
+    build: ./backend
+    image: narsss1234/node-app:backend
+    container_name: backend
+    ports:
+     - "5000:5000"
+  chatbackend:
+    build: ./chatbackend
+    image: narsss1234/node-app:chatbackend
+    container_name: chatbackend
+    ports:
+      - "5500:5500"
