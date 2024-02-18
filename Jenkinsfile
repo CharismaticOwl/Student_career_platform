@@ -14,6 +14,7 @@ pipeline{
                 git branch:'develop', url: 'https://github.com/CharismaticOwl/Student_career_platform.git'
             }
         }
+
         stage('Containerize frontend'){
             steps{
                 script{
@@ -23,21 +24,24 @@ pipeline{
             }
         }
 
-        // stage('Containerize backend'){
-        //     steps{
-        //         script{
-        //             sh 'docker build -t ${BACKEND_IMAGE} backend'
-        //         }
-        //     }
-        // }
+        stage('Containerize backend'){
+            steps{
+                script{
+                    
+                    frontendImage = docker.build("${BACKEND_IMAGE}","backend")
+                }
+            }
+        }
 
-        // stage('Containerize chatbackend'){
-        //     steps{
-        //         script{
-        //             sh 'docker build -t ${CHATBACKEND_IMAGE} chatbackend'
-        //         }
-        //     }
-        // }
+        stage('Containerize chatbackend'){
+            steps{
+                script{
+                    
+                    frontendImage = docker.build("${CHATBACKEND_IMAGE}","chatbackend")
+                }
+            }
+        }
+        
 
         // stage('Push images to AWS ECR'){
         //     steps{
