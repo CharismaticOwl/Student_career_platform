@@ -18,7 +18,7 @@ pipeline{
             steps{
                 script{
                     
-                    frontendImage = docker.build("${FRONTEND_IMAGE}","-f frontend")
+                    frontendImage = docker.build("${FRONTEND_IMAGE}","frontend")
                 }
             }
         }
