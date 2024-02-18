@@ -47,9 +47,9 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('https://367065853931.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws') {
-                    frontendImage.push("${FRONTEND_IMAGE}")
-                    backendendImage.push("${BACKEND_IMAGE}")
-                    chatbackendImage.push("${CHATBACKEND_IMAGE}")
+                    frontendImage.push()
+                    backendendImage.push()
+                    chatbackendImage.push()
                 }
             }
         }
