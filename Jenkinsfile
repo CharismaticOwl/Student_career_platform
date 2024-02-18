@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     environment{
-        ECR_REPO = 'node-app'
+        ECR_REPO = '367065853931.dkr.ecr.ap-south-1.amazonaws.com/node-app'
         FRONTEND_IMAGE = "${ECR_REPO}:frontend"
         BACKEND_IMAGE = "${ECR_REPO}:backend"
         CHATBACKEND_IMAGE = "${ECR_REPO}:chatbackend"
@@ -40,8 +40,12 @@ pipeline{
 
         stage('Push images to AWS ECR'){
             steps{
-                withAWS(credentials: 'aws', region: 'ap-south-1') {
-                    sh 'aws ecr get-login-password --region ap-south-1 | docker login 367065853931.dkr.ecr.ap-south-1.amazonaws.com'
+                script{
+                    withAWS(credentials: 'aws', region: 'ap-south-1') {
+                        sh 'docker push ${FRONTEND_IMAGE}'
+                        sh 'docker push ${FRONTEND_IMAGE}'
+                        sh 'docker push ${FRONTEND_IMAGE}'
+                    }
                 }
             }
         }
