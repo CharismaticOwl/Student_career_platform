@@ -38,10 +38,10 @@ pipeline{
             }
         }
 
-        stage('Testing AWS'){
+        stage('Push images to AWS ECR'){
             steps{
                 withAWS(credentials: 'aws', region: 'ap-south-1') {
-                    sh 'aws sts get-caller-identity'
+                    sh 'aws ecr get-login-password --region ap-south-1 | docker login 367065853931.dkr.ecr.ap-south-1.amazonaws.com'
                 }
             }
         }
